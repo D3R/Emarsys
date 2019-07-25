@@ -904,10 +904,6 @@ class Client
             throw new ServerException($e->getMessage());
         }
 
-        $exception = new ServerException("JSON response could not be decoded:");
-        $exception->setResponseMessage('hello');
-        throw $exception;
-
         $responseArray = json_decode($responseJson, true);
 
         if ($responseArray === null) {

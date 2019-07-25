@@ -1,5 +1,5 @@
 {
-    "name": "d3r/emarsys",
+    "name": "snowcap/emarsys",
     "description": "Emarsys RestFull API client",
     "require": {
         "php": ">=5.3.3",

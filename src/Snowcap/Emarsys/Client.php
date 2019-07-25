@@ -904,6 +904,10 @@ class Client
             throw new ServerException($e->getMessage());
         }
 
+        $exception = new ServerException("JSON response could not be decoded:");
+        $exception->setResponseMessage('hello');
+        throw $exception;
+
         $responseArray = json_decode($responseJson, true);
 
         if ($responseArray === null) {
@@ -911,7 +915,9 @@ class Client
                 case JSON_ERROR_DEPTH:
                     throw new ClientException('JSON response could not be decoded, maximum depth reached.');
                 default:
-                    throw new ServerException("JSON response could not be decoded:\n" . json_last_error_msg());
+                    $exception = new ServerException("JSON response could not be decoded:\n" . json_last_error_msg());
+                    $exception->setResponseMessage($responseJson);
+                    throw $exception;
             }
         }
 

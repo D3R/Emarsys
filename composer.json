@@ -20,11 +20,5 @@
             "email": "jerome@snowcap.be"
         }
     ],
-    "minimum-stability": "dev",
-    "repositories": [
-        {
-            "type": "composer",
-            "url": "https://packages.d3r.com"
-        }
-    ]
+    "minimum-stability": "dev"
 }

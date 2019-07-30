@@ -911,7 +911,9 @@ class Client
                 case JSON_ERROR_DEPTH:
                     throw new ClientException('JSON response could not be decoded, maximum depth reached.');
                 default:
-                    throw new ServerException("JSON response could not be decoded:\n" . json_last_error_msg());
+                    $exception = new ServerException("JSON response could not be decoded:\n" . json_last_error_msg());
+                    $exception->setResponseMessage($responseJson);
+                    throw $exception;
             }
         }
 
